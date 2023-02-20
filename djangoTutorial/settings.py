@@ -129,6 +129,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# TODO for production, static files need to be served differently
+# see here: https://docs.djangoproject.com/en/4.1/howto/static-files/deployment/
 STATIC_URL = 'static/'
 
 # Default primary key field type
