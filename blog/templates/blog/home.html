@@ -9,12 +9,13 @@
                         {{ post.author }}
                     </a>
                     <small class="text-muted">
-                        {{post.date_posted}}
+                        <!-- https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#date -->
+                        {{ post.date_posted | date:"M j, o" }}
                     </small>
                 </div>
                 <h2>
                     <a classj="article-title" href="#">
-                        {{post.title}}
+                        {{ post.title }}
                     </a>
                 </h2>
                 <p class="article-content">{{ post.content }}</p>
