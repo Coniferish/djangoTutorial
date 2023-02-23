@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# instead of creating a urls module in the "users app" and creating a urlpattern for it,
+# you can import the view directly by importing it and 
+from users import views as user_views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     path('', include('blog.urls')),
+    path('register/', user_views.register, name='register'),
 ]
