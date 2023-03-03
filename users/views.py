@@ -12,8 +12,8 @@ def register(request):
         if form.is_valid():
             form.save() # this automatically hashes the password and everything else
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}.')
-            return redirect('blog-home')
+            messages.success(request, f'Account created for {username}. You may now log in.')
+            return redirect('login')
     else:
         form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
