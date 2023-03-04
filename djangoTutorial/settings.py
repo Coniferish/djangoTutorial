@@ -151,3 +151,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'blog-home'
 # this is the name we gave to the urlpattern for the login route
 LOGIN_URL = 'login' # it is used when a client who is not logged in tries to access the profile page (they are redirected here)
+MEDIA_ROUTE = os.path.join(BASE_DIR, 'media') # directory (not in the db)
+MEDIA_URL = '/media/'
+
