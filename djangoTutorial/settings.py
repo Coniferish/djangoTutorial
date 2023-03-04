@@ -147,4 +147,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# TODO: figure out how these variables are automatically being used by Django (where the documentation is for this)
 LOGIN_REDIRECT_URL = 'blog-home'
+# this is the name we gave to the urlpattern for the login route
+LOGIN_URL = 'login' # it is used when a client who is not logged in tries to access the profile page (they are redirected here)
