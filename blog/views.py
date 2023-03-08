@@ -17,6 +17,7 @@ class PostListView(ListView):
     template_name = 'blog/home.html'
     # this class view also needs to know the variable name for the items it will be iterating over
     context_object_name = 'posts'
+    ordering = ['-date_posted']
 
 def about(request):
     return render(request, 'blog/about.html', {'title':'About'})
