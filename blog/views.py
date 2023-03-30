@@ -36,6 +36,10 @@ class PostCreateView(CreateView):
     fields = ['title', 'content']
     # because we're going to share the template for this view, 
     # django expects the name to be <model>_form, so "post_form" is the template name
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 def about(request):
     return render(request, 'blog/about.html', {'title':'About'})
