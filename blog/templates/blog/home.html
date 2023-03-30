@@ -15,7 +15,12 @@
                     </small>
                 </div>
                 <h2>
-                    <a class="article-title" href="#">
+                    <!-- Even though the PostDetailView uses "object" instead of "post" as the context_object_name,
+                    home.html is being used by the home method defined in views.py and there
+                    "posts" is defined as the key, and in the for loop in this file "post" is the name for each object.
+                    Thus, we use "post.id" -->
+                    <!-- Django is matching the url name in urls.py -->
+                    <a class="article-title" href="{% url 'post-detail' post.id %}">
                         {{ post.title }}
                     </a>
                 </h2>
