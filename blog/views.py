@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
 def home(request):
@@ -29,6 +29,13 @@ class PostDetailView(DetailView):
     # for this class view, we're using the django defaults, 
     # so we aren't defining the template_name, context_object_name, etc. (as done above)
     model = Post
+
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ['title', 'content']
+    # because we're going to share the template for this view, 
+    # django expects the name to be <model>_form, so "post_form" is the template name
 
 def about(request):
     return render(request, 'blog/about.html', {'title':'About'})
