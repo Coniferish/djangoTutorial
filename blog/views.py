@@ -1,6 +1,12 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import (
+    ListView, 
+    DetailView, 
+    CreateView, 
+    UpdateView
+    )
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 
 def home(request):
@@ -32,7 +38,18 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content']
+    # because we're going to share the template for this view, 
+    # django expects the name to be <model>_form, so "post_form" is the template name
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
     # because we're going to share the template for this view, 
