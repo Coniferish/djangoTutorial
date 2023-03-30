@@ -25,6 +25,7 @@ class PostListView(ListView):
     context_object_name = 'posts'
     ordering = ['-date_posted']
 
+
 class PostDetailView(DetailView):
     # for this class view, we're using the django defaults, 
     # so we aren't defining the template_name, context_object_name, etc. (as done above)
@@ -40,6 +41,7 @@ class PostCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
 
 def about(request):
     return render(request, 'blog/about.html', {'title':'About'})
