@@ -31,6 +31,7 @@ class PostListView(ListView):
     # this class view also needs to know the variable name for the items it will be iterating over
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 2
 
 
 class PostDetailView(DetailView):
