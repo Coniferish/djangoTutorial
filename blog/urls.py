@@ -6,11 +6,13 @@ from .views import (
     PostDetailView, 
     PostCreateView, 
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    UserPostListView
     )
 
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
+    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),
     # using a variable in the route (for individual posts, which will be numbered)
     # the detail view is expecting the "pk" variable (we could change this in the class)
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
