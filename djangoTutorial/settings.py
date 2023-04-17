@@ -94,8 +94,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydb',
-        'USER': os.environ['MYSQL_USER'],
-        'PASSWORD': os.environ['MYSQL_PASSWORD'],
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
         'HOST':'localhost',
         'PORT':'3306',
         'OPTIONS': {
@@ -155,3 +155,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # directory (not in the db)
 MEDIA_URL = '/media/' # how/where the image is accessed from a browser
 
 # TODO: https://docs.djangoproject.com/en/4.2/howto/static-files/#serving-static-files-during-development
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PW')
