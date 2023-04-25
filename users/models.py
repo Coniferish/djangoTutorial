@@ -9,9 +9,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def save(self): # the save method is automatically run whenever the model is saved,
+    def save(self, *args, **kwargs): # the save method is automatically run whenever the model is saved,
         # but we are adding features, so will need to access it ourselves
-        super().save()
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
         
